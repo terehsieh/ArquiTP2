@@ -17,7 +17,7 @@ public class Matricula implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_estudiante", referencedColumnName = "legajo")
 	private Estudiante estudiante;
-	
+
 	@Id
 	@ManyToOne
 	@JoinColumn(name = "id_carrera", referencedColumnName = "id_carrera")
@@ -36,8 +36,6 @@ public class Matricula implements Serializable {
 		super();
 	}
 
-	
-
 	public Matricula(Estudiante estudiante, Carrera carrera, Timestamp fecha_inscripcion, Timestamp fecha_graduacion,
 			boolean finalizo) {
 		super();
@@ -52,9 +50,8 @@ public class Matricula implements Serializable {
 		super();
 		this.estudiante = estudiante;
 		this.carrera = carrera;
-	
-	}
 
+	}
 
 	public Timestamp getFecha_inscripcion() {
 		return fecha_inscripcion;
@@ -80,38 +77,26 @@ public class Matricula implements Serializable {
 		this.finalizo = finalizo;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Matricula [estudiante=" + estudiante + ", carrera=" + carrera + ", fecha_inscripcion="
 				+ fecha_inscripcion + ", fecha_graduacion=" + fecha_graduacion + ", finalizo=" + finalizo + "]";
 	}
 
-
-
 	public Estudiante getEstudiante() {
 		return estudiante;
 	}
-
-
 
 	public void setEstudiante(Estudiante estudiante) {
 		this.estudiante = estudiante;
 	}
 
-
-
 	public Carrera getCarrera() {
 		return carrera;
 	}
 
-
-
 	public void setCarrera(Carrera carrera) {
 		this.carrera = carrera;
 	}
-
-	
 
 }

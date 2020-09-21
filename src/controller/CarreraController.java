@@ -6,9 +6,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+
 import entidades.Carrera;
 
-public class CarreraController  implements Serializable{
+public class CarreraController implements Serializable {
 
 	private static final long serialVersionUID = 902997133635722325L;
 	private EntityManagerFactory emf = null;
@@ -44,5 +46,21 @@ public class CarreraController  implements Serializable{
 			return listado.get(0);
 		}
 	}
+	
+
+	public List<Carrera> getCarrerasPorInscriptos() {
+		EntityManager em = emf.createEntityManager();
+		Query query = em
+				.createNativeQuery("SELECT m.id_carrera, c.nombre_carrera FROM carrera c JOIN Matricula m ON c.id_carrera=m.id_carrera GROUP BY m.id_carrera, c.nombre_carrera ORDER BY count(m.id_carrera) DESC", Carrera.class)
+				;
+		 List<Carrera> listado = query.getResultList();
+		if (listado.size() == 0) {// no hay carrera con ese id
+			return null;
+		} else {
+			return listado;
+		}
+	}
+	
+
 
 }

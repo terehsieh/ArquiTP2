@@ -18,12 +18,13 @@ public class Insert {
 		Carrera c1 = new Carrera(1, "Tudai");
 		Carrera c2 = new Carrera(2, "Sistemas");
 		Carrera c3 = new Carrera(3, "Tupar");
+		Carrera c4 = new Carrera(4, "Fisica");
 		CarreraController carreras = new CarreraController();
 		carreras.insert(c1);
 		carreras.insert(c2);
 		carreras.insert(c3);
+		carreras.insert(c4);
 // ESTUDIANTES
-
 		Estudiante e1 = new Estudiante(1, "Tere", "Hsieh", 23, "F", 11, "Tandil");
 		Estudiante e2 = new Estudiante(2, "Nina", "Encinosa", 23, "F", 123, "Tandil");
 		Estudiante e3 = new Estudiante(3, "Fede", "Fuhr", 23, "M", 234, "Tandil");
@@ -38,11 +39,13 @@ public class Insert {
 		Matricula m1= new Matricula(e1, c1,new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), false);
 		Matricula m2= new Matricula(e1, c2,new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), false);
 		Matricula m3= new Matricula(e2, c2,new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), false);
-		
+		Matricula m4= new Matricula(e4, c4,new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), false);
 		MatriculaController matricula= new MatriculaController();
 		matricula.insert(m1);
 		matricula.insert(m2);
 		matricula.insert(m3);
+		matricula.insert(m4);
+		
 
 	}
 

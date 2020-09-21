@@ -63,8 +63,7 @@ public class Carrera {
 
 	@Override
 	public String toString() {
-		return "Carrera [id_carrera=" + id_carrera + ", nombre_carrera=" + nombre_carrera + ", estudiantes="
-				+ estudiantes + "]";
+		return "Carrera [id_carrera=" + id_carrera + ", nombre_carrera=" + nombre_carrera +  "]";
 	}
 
 }
