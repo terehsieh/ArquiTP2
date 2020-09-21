@@ -8,6 +8,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
+
 import entidades.Carrera;
 
 public class CarreraController implements Serializable {
@@ -60,7 +63,13 @@ public class CarreraController implements Serializable {
 			return listado;
 		}
 	}
-	
+	//CSV
+
+	public void agregarCarreras(CSVParser c) {
+		for(CSVRecord row: c) {
+			this.insert(new Carrera(Integer.parseInt(row.get("id_carrera")), row.get("nombre_carrera")));
+		}
+	}
 
 
 }

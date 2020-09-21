@@ -54,22 +54,11 @@ public class MatriculaController implements Serializable {
 			return listado.get(0);
 		}
 	}
-	
-//	public Matricula getMatricula(Matricula matricula) {
-//		EntityManager em = emf.createEntityManager();
-//		Query query = em
-//				.createNativeQuery(
-//						"SELECT * FROM Matricula M WHERE M.id_estudiante =:id_estu AND M.id_carrera =:id_car ",
-//						Matricula.class)
-//				.setParameter("id_estu", matricula.getEstudiante().getLegajo())
-//				.setParameter("id_car", matricula.getCarrera().getId_Carrera());
-//		List<Matricula> listado = query.getResultList();
-//		if (listado.size() == 0) {
-//			return null;
-//		} else {
-//			return listado.get(0);
-//		}
-//	}
+//CSV
 	
 
-}
+
+	
+	
+	}
+
