@@ -1,7 +1,7 @@
 package entidades;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.sql.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,10 +24,10 @@ public class Matricula implements Serializable {
 	private Carrera carrera;
 
 	@Column(nullable = false)
-	private Timestamp fecha_inscripcion;
+	private Date fecha_inscripcion;
 
 	@Column(nullable = true)
-	private Timestamp fecha_graduacion;
+	private Date fecha_graduacion;
 
 	@Column(nullable = false, name = "finalizo")
 	private boolean finalizo;
@@ -36,7 +36,7 @@ public class Matricula implements Serializable {
 		super();
 	}
 
-	public Matricula(Estudiante estudiante, Carrera carrera, Timestamp fecha_inscripcion, Timestamp fecha_graduacion,
+	public Matricula(Estudiante estudiante, Carrera carrera, Date fecha_inscripcion, Date fecha_graduacion,
 			boolean finalizo) {
 		super();
 		this.estudiante = estudiante;
@@ -53,19 +53,20 @@ public class Matricula implements Serializable {
 
 	}
 
-	public Timestamp getFecha_inscripcion() {
+
+	public Date getFecha_inscripcion() {
 		return fecha_inscripcion;
 	}
 
-	public void setFecha_inscripcion(Timestamp fecha_inscripcion) {
+	public void setFecha_inscripcion(Date fecha_inscripcion) {
 		this.fecha_inscripcion = fecha_inscripcion;
 	}
 
-	public Timestamp getFecha_graduacion() {
+	public Date getFecha_graduacion() {
 		return fecha_graduacion;
 	}
 
-	public void setFecha_graduacion(Timestamp fecha_graduacion) {
+	public void setFecha_graduacion(Date fecha_graduacion) {
 		this.fecha_graduacion = fecha_graduacion;
 	}
 

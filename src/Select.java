@@ -19,7 +19,8 @@ public class Select {
 //System.out.println(estudiantes.getEstudianteDNI(123));
 		MatriculaController matricula = new MatriculaController();
 		CarreraController carreras = new CarreraController();
-		//c) recuperar todos los estudiantes, y especificar algún criterio de ordenamiento simple.
+		// c) recuperar todos los estudiantes, y especificar algún criterio de
+		// ordenamiento simple.
 //		for (Estudiante estu : estudiantes.getEstudiantesSortDNI()) {
 //			System.out.println(estu);
 //	}
@@ -29,18 +30,17 @@ public class Select {
 //		for (Estudiante estu : estudiantes.getEstudianteGenero("M")) {
 //			System.out.println(estu);
 //		}
-	//f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad de inscriptos.
+		// f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad
+		// de inscriptos.
 //		for (Carrera carrera : carreras.getCarrerasPorInscriptos()) {
 //		System.out.println(carrera);
 //	}		
-		// g) recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia. 
+		// g) recuperar los estudiantes de una determinada carrera, filtrado por ciudad
+		// de residencia.
 		for (Estudiante estudiante : estudiantes.getEstudiantesCarreraResidencia("Sistemas", "Tandil")) {
 			System.out.println(estudiante);
-		}	
+		}
 
-	
-	
-	
 	}
 
 }

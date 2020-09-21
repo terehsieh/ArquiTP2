@@ -1,3 +1,4 @@
+import java.sql.Date;
 import java.sql.Timestamp;
 
 import controller.CarreraController;
@@ -19,6 +20,7 @@ public class Insert {
 		Carrera c2 = new Carrera(2, "Sistemas");
 		Carrera c3 = new Carrera(3, "Tupar");
 		Carrera c4 = new Carrera(4, "Fisica");
+		
 		CarreraController carreras = new CarreraController();
 		carreras.insert(c1);
 		carreras.insert(c2);
@@ -29,24 +31,39 @@ public class Insert {
 		Estudiante e2 = new Estudiante(2, "Nina", "Encinosa", 23, "F", 123, "Tandil");
 		Estudiante e3 = new Estudiante(3, "Fede", "Fuhr", 23, "M", 234, "Tandil");
 		Estudiante e4 = new Estudiante(4, "Martin", "Massimo", 23, "M", 345, "Tandil");
-
+		Estudiante e5 = new Estudiante(5, "Juan", "Massimo", 23, "M", 111, "Necochea");
+		Estudiante e6 = new Estudiante(6, "Flor", "Sanna", 23, "F", 222, "Loberia");
+		Estudiante e7 = new Estudiante(7, "Pepe", "Sanna", 23, "F", 222, "Azul");
+		
 		EstudianteController estudiantes = new EstudianteController();
 		estudiantes.insert(e1);
 		estudiantes.insert(e2);
 		estudiantes.insert(e3);
 		estudiantes.insert(e4);
+		estudiantes.insert(e5);
+		estudiantes.insert(e6);
+		estudiantes.insert(e7);
+		//MATRICULAS
+		Matricula m1= new Matricula(e1, c1, new Date(2019,12,16), new Date(2020,11,16), true);
+		Matricula m2= new Matricula(e1, c2,new Date(2018,12,16), new Date(2020,11,16), false);
+		Matricula m3= new Matricula(e2, c2,new Date(2018,12,16), new Date(2019,11,16), true);
+		Matricula m4= new Matricula(e4, c4,new Date(2017,12,16), new Date(2022,11,16), false);
+		Matricula m5= new Matricula(e5, c2,new Date(2016,12,16), new Date(2019,11,16), false);
+		Matricula m6= new Matricula(e6, c2,new Date(2016,12,16), new Date(2019,11,16), true);
 		
-		Matricula m1= new Matricula(e1, c1,new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), false);
-		Matricula m2= new Matricula(e1, c2,new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), false);
-		Matricula m3= new Matricula(e2, c2,new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), false);
-		Matricula m4= new Matricula(e4, c4,new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), false);
 		MatriculaController matricula= new MatriculaController();
 		matricula.insert(m1);
 		matricula.insert(m2);
 		matricula.insert(m3);
 		matricula.insert(m4);
+		matricula.insert(m5);
+		matricula.insert(m6);
+		
+		
 		
 
 	}
+
+	
 
 }
