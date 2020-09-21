@@ -74,7 +74,9 @@ public class Insert {
 			carreras.agregarCarreras(carrerasCSV);
 			//clientes.agregarClientes(clientesCSV);
 			
-//			CSVParser estudiantesCSV = CSVFormat.DEFAULT.withHeader().parse(new FileReader("csv/estudiantes.csv"));
+			CSVParser estudiantesCSV = CSVFormat.DEFAULT.withHeader().parse(new FileReader("csv/estudiantes.csv"));
+			EstudianteController estudiantes = new EstudianteController();
+			estudiantes.agregarEstudiantes(estudiantesCSV);
 //			
 //			
 //			CSVParser matriculasCSV = CSVFormat.DEFAULT.withHeader().parse(new FileReader("csv/matriculas.csv"));

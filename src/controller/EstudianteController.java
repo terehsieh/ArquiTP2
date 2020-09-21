@@ -7,6 +7,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
+
 import entidades.Estudiante;
 
 
@@ -94,5 +97,10 @@ public class EstudianteController  implements Serializable{
 		}
 	}
 
-	
+	public void agregarEstudiantes(CSVParser c) {
+		// TODO Auto-generated method stub
+		for(CSVRecord row: c) {
+			this.insert(new Estudiante(Integer.parseInt(row.get("legajo")), row.get("nombre"), row.get("apellido"), Integer.parseInt(row.get("edad")), row.get("genero"), Integer.parseInt(row.get("dni")), row.get("ciudad_residencia")));
+		}
+	}
 }
