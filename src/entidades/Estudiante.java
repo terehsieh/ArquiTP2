@@ -7,9 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import controller.ClienteDTO;
-import controller.PreparedStatement;
-import controller.SQLException;
 
 @Entity
 public class Estudiante {
@@ -140,35 +137,35 @@ public class Estudiante {
 				+ ", genero=" + genero + ", dni=" + dni + ", ciudad_residencia=" + ciudad_residencia+"]";
 	}
 	//CSV
-	private void insertCSV(ClienteDTO c) {
-		PreparedStatement ps = null;
-		try {
-			ps = conn.prepareStatement("INSERT INTO estudiante (legajo, apellido, ciudad_residencia, DNI, edad, genero, nombre) VALUES (?,?,?,?,?,?,?)");
-			ps.setInt(1, c.getIdCliente());
-			ps.setString(2,c.getNombre());
-			ps.setString(3, c.getEmail());
-			ps.executeUpdate();
-			conn.commit();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			if (ps != null) {
-				try {
-					ps.close();
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
-			}
-		}
-	}
-
-	public void agregarEstudiantes(CSVParser c) {
-		// TODO Auto-generated method stub
-		for(CSVRecord row: c) {
-			this.agregarCliente(new ClienteDTO(Integer.parseInt(row.get("idCliente")), row.get("nombre"), row.get("email")));
-		}
-	}
+//	private void insertCSV(ClienteDTO c) {
+//		PreparedStatement ps = null;
+//		try {
+//			ps = conn.prepareStatement("INSERT INTO estudiante (legajo, apellido, ciudad_residencia, DNI, edad, genero, nombre) VALUES (?,?,?,?,?,?,?)");
+//			ps.setInt(1, c.getIdCliente());
+//			ps.setString(2,c.getNombre());
+//			ps.setString(3, c.getEmail());
+//			ps.executeUpdate();
+//			conn.commit();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} finally {
+//			if (ps != null) {
+//				try {
+//					ps.close();
+//				} catch (Exception e) {
+//					// TODO: handle exception
+//				}
+//			}
+//		}
+//	}
+//
+//	public void agregarEstudiantes(CSVParser c) {
+//		// TODO Auto-generated method stub
+//		for(CSVRecord row: c) {
+//			this.agregarCliente(new ClienteDTO(Integer.parseInt(row.get("idCliente")), row.get("nombre"), row.get("email")));
+//		}
+//	}
 
 
 }
