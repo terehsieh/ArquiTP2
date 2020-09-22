@@ -77,6 +77,8 @@ public class Select {
 		   los años de manera cronológica.
 		 */
 		
+		CarreraController c1 = new CarreraController();
 		
+		c1.getGraduadosPorCarrera();
 	}
 }

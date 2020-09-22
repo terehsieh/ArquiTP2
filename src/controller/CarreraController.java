@@ -50,7 +50,26 @@ public class CarreraController implements Serializable {
 		}
 	}
 	
-
+	public List<Object> getInscriptosPorCarrera() {
+		EntityManager em = emf.createEntityManager();
+		Query query = em
+				.createNativeQuery("SELECT c.*,extract(year from m.fecha_inscripcion) as fechaInscripcion, count(m.id_carrera) as CantInscriptos\n" + 
+						"FROM Carrera c JOIN Matricula m ON (c.id_carrera = m.id_carrera)\n" + 
+						"GROUP BY m.id_carrera, extract(YEAR FROM m.fecha_inscripcion)");
+		List<Object> join = query.getResultList();
+		return join;
+	}
+	
+	public List<Object> getGraduadosPorCarrera() {
+		EntityManager em = emf.createEntityManager();
+		Query query = em
+				.createNativeQuery("SELECT c.*,extract(year from m.fecha_graduacion) as fechaGraduacion , SUM(m.finalizo) as cantGraduados\n" + 
+						"FROM Carrera c JOIN Matricula m ON (c.id_carrera = m.id_carrera)\n" + 
+						"GROUP BY m.id_carrera,extract(YEAR FROM m.fecha_graduacion)");
+		List<Object> join = query.getResultList();
+		return join;	
+	}
+	
 	public List<Carrera> getCarrerasPorInscriptos() {
 		EntityManager em = emf.createEntityManager();
 		Query query = em
