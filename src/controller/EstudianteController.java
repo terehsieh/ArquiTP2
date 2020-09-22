@@ -84,6 +84,7 @@ public class EstudianteController  implements Serializable{
 			return listado;
 		}
 	}
+	
 	public 	List<Estudiante> getEstudiantesCarreraResidencia(String carrera, String residencia) {
 		EntityManager em = emf.createEntityManager();
 		Query query =em.createNativeQuery("SELECT e.* FROM Estudiante e JOIN Matricula m ON (e.legajo=m.id_estudiante) JOIN Carrera c ON (m.id_carrera=c.id_carrera) WHERE c.nombre_carrera =:nombre_carrera AND e.ciudad_residencia=:ciudad_residencia ", Estudiante.class)

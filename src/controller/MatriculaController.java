@@ -30,19 +30,13 @@ public class MatriculaController implements Serializable {
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
-			if (this.getMatricula(matricula) != null) {
-				System.out.println(
-						"Ya se encuentra inscripto en la carrera: " + matricula.getCarrera().getNombre_carrera());
-			} else {
-				em.getTransaction().begin();
-				em.persist(matricula);
-				em.getTransaction().commit();
-			}
+			em.getTransaction().begin();
+			em.persist(matricula);
+			em.getTransaction().commit();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
-
 	
 	// Fijar que no se haya creado la matricula. Controlar:id estudiante, id carrera
 	public Matricula getMatricula(Matricula matricula) {
@@ -60,9 +54,7 @@ public class MatriculaController implements Serializable {
 			return listado.get(0);
 		}
 	}
-//CSV
 	
-
 	public void agregarMatriculas(CSVParser c) {
 		// TODO Auto-generated method stub
 		for(CSVRecord row: c) {
@@ -90,19 +82,15 @@ public class MatriculaController implements Serializable {
 			String fecha_inscripcion = String.valueOf(row.get("fecha_inscripcion"));
 			String fecha_graduacion = String.valueOf(row.get("fecha_graduacion"));
 			
-
 			java.sql.Date date1 = java.sql.Date.valueOf(fecha_inscripcion);//converting string into sql date
 			java.sql.Date date2 = java.sql.Date.valueOf(fecha_graduacion);//converting string into sql date
 			
-		
 			boolean b = Boolean.parseBoolean(row.get("finalizo"));
 			Matricula m = new Matricula(e, carr, date1, date2, b);
-			this.insert(m);
-
-			
+			this.insert(m);	
 		}
 	}
 	
 	
-	}
+}
 
