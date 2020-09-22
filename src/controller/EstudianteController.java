@@ -86,15 +86,11 @@ public class EstudianteController  implements Serializable{
 	}
 	public 	List<Estudiante> getEstudiantesCarreraResidencia(String carrera, String residencia) {
 		EntityManager em = emf.createEntityManager();
-		Query query =em.createNativeQuery("SELECT e.* FROM estudiante e JOIN matricula m ON (e.legajo=m.id_estudiante) JOIN carrera c ON (m.id_carrera=c.id_carrera) WHERE c.nombre_carrera =:nombre_carrera AND e.ciudad_residencia=:ciudad_residencia ", Estudiante.class)
+		Query query =em.createNativeQuery("SELECT e.* FROM Estudiante e JOIN Matricula m ON (e.legajo=m.id_estudiante) JOIN Carrera c ON (m.id_carrera=c.id_carrera) WHERE c.nombre_carrera =:nombre_carrera AND e.ciudad_residencia=:ciudad_residencia ", Estudiante.class)
 				.setParameter("nombre_carrera", carrera)
 				.setParameter("ciudad_residencia", residencia);
 		List<Estudiante> listado = query.getResultList();
-		if (listado.size() == 0) {// no existe el estudiante
-			return null;
-		} else {
-			return listado;
-		}
+		return listado;
 	}
 
 	public void agregarEstudiantes(CSVParser c) {

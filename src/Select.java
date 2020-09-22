@@ -27,9 +27,11 @@ public class Select {
 //		d) recuperar un estudiante, en base a su número de libreta universitaria. 
 		// System.out.println(estudiantes.getEstudianteLegajo(3));
 		// e) recuperar todos los estudiantes, en base a su género.
-//		for (Estudiante estu : estudiantes.getEstudianteGenero("M")) {
-//			System.out.println(estu);
-//		}
+		String genero = "Masculino";
+		System.out.println("Estudiantes de genero " + genero);
+		for (Estudiante estu : estudiantes.getEstudianteGenero(genero)) {
+			System.out.println(estu);
+		}
 		// f) recuperar las carreras con estudiantes inscriptos, y ordenar por cantidad
 		// de inscriptos.
 //		for (Carrera carrera : carreras.getCarrerasPorInscriptos()) {
@@ -37,7 +39,10 @@ public class Select {
 //	}		
 		// g) recuperar los estudiantes de una determinada carrera, filtrado por ciudad
 		// de residencia.
-		for (Estudiante estudiante : estudiantes.getEstudiantesCarreraResidencia("Sistemas", "Tandil")) {
+		String carrera = "Sistemas";
+		String residencia = "Sandy";
+		System.out.println("Estudiante de " + residencia + "que estudia en " + carrera);
+		for (Estudiante estudiante : estudiantes.getEstudiantesCarreraResidencia("Sistemas", "Sandy")) {
 			System.out.println(estudiante);
 		}
 

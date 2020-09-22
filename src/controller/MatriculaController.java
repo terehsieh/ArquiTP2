@@ -1,10 +1,8 @@
 package controller;
 
 import java.io.Serializable;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
+import java.sql.Date;  
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -32,7 +30,6 @@ public class MatriculaController implements Serializable {
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
-			System.out.println(matricula);
 			if (this.getMatricula(matricula) != null) {
 				System.out.println(
 						"Ya se encuentra inscripto en la carrera: " + matricula.getCarrera().getNombre_carrera());
@@ -90,23 +87,16 @@ public class MatriculaController implements Serializable {
 			List<Carrera> carrera = query2.getResultList();
 			Carrera carr = carrera.get(0);
 			
-			System.out.println("dsadsa");
-			
 			String fecha_inscripcion = String.valueOf(row.get("fecha_inscripcion"));
 			String fecha_graduacion = String.valueOf(row.get("fecha_graduacion"));
 			
-			System.out.println(fecha_inscripcion + fecha_graduacion);
 
 			java.sql.Date date1 = java.sql.Date.valueOf(fecha_inscripcion);//converting string into sql date
 			java.sql.Date date2 = java.sql.Date.valueOf(fecha_graduacion);//converting string into sql date
 			
-			
-			System.out.println(date1);
-			System.out.println(date2);
-			
+		
 			boolean b = Boolean.parseBoolean(row.get("finalizo"));
 			Matricula m = new Matricula(e, carr, date1, date2, b);
-			System.out.println(m);
 			this.insert(m);
 
 			
