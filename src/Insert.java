@@ -77,10 +77,12 @@ public class Insert {
 			CSVParser estudiantesCSV = CSVFormat.DEFAULT.withHeader().parse(new FileReader("csv/estudiantes.csv"));
 			EstudianteController estudiantes = new EstudianteController();
 			estudiantes.agregarEstudiantes(estudiantesCSV);
-//			
-//			
-//			CSVParser matriculasCSV = CSVFormat.DEFAULT.withHeader().parse(new FileReader("csv/matriculas.csv"));
-//	
+			
+			
+			CSVParser matriculasCSV = CSVFormat.DEFAULT.withHeader().parse(new FileReader("csv/matriculas.csv"));
+			MatriculaController matriculas = new MatriculaController();
+			matriculas.agregarMatriculas(matriculasCSV);
+	
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

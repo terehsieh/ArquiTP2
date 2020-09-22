@@ -1,6 +1,9 @@
 package controller;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -8,6 +11,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
+
+import entidades.Carrera;
+import entidades.Estudiante;
 import entidades.Matricula;
 
 public class MatriculaController implements Serializable {
@@ -24,6 +32,7 @@ public class MatriculaController implements Serializable {
 		EntityManager em = null;
 		try {
 			em = emf.createEntityManager();
+			System.out.println(matricula);
 			if (this.getMatricula(matricula) != null) {
 				System.out.println(
 						"Ya se encuentra inscripto en la carrera: " + matricula.getCarrera().getNombre_carrera());
@@ -57,7 +66,52 @@ public class MatriculaController implements Serializable {
 //CSV
 	
 
+	public void agregarMatriculas(CSVParser c) {
+		// TODO Auto-generated method stub
+		for(CSVRecord row: c) {
+			EntityManager em = emf.createEntityManager();
+			Query query = em
+					.createNativeQuery(
+							"SELECT * FROM Estudiante e WHERE e.legajo =:id_estu",
+							Estudiante.class)
+					.setParameter("id_estu", Integer.parseInt(row.get("id_estudiante")));
+			List<Estudiante> estudiante = query.getResultList();
+			Estudiante e = estudiante.get(0);
+			
+			
+			
+			int id = Integer.parseInt(row.get("id_carrera"));
+			EntityManager em2 = emf.createEntityManager();
+			Query query2 = em2
+					.createNativeQuery(
+							"SELECT * FROM Carrera c WHERE c.id_carrera =:id_carr",
+							Carrera.class)
+					.setParameter("id_carr", id);
+			List<Carrera> carrera = query2.getResultList();
+			Carrera carr = carrera.get(0);
+			
+			System.out.println("dsadsa");
+			
+			String fecha_inscripcion = String.valueOf(row.get("fecha_inscripcion"));
+			String fecha_graduacion = String.valueOf(row.get("fecha_graduacion"));
+			
+			System.out.println(fecha_inscripcion + fecha_graduacion);
 
+			java.sql.Date date1 = java.sql.Date.valueOf(fecha_inscripcion);//converting string into sql date
+			java.sql.Date date2 = java.sql.Date.valueOf(fecha_graduacion);//converting string into sql date
+			
+			
+			System.out.println(date1);
+			System.out.println(date2);
+			
+			boolean b = Boolean.parseBoolean(row.get("finalizo"));
+			Matricula m = new Matricula(e, carr, date1, date2, b);
+			System.out.println(m);
+			this.insert(m);
+
+			
+		}
+	}
 	
 	
 	}
