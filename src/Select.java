@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import controller.CarreraController;
@@ -65,9 +66,9 @@ public class Select {
 		System.out.println("");
 		System.out.println("G) Recuperar los estudiantes de una determinada carrera, filtrado por ciudad de residencia");
 		String carrera = "Sistemas";
-		String residencia = "Sandy";
-		System.out.println("Estudiante de " + residencia + "que estudia en " + carrera);
-		for (Estudiante estudiante : estudiantes.getEstudiantesCarreraResidencia("Sistemas", "Sandy")) {
+		String residencia = "Caldera";
+		//System.out.println("Estudiante de " + residencia + "que estudia en " + carrera);
+		for (Estudiante estudiante : estudiantes.getEstudiantesCarreraResidencia(carrera, residencia)) {
 			System.out.println(estudiante);
 		}
 		
@@ -76,9 +77,19 @@ public class Select {
 		   inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar
 		   los años de manera cronológica.
 		 */
-		
+		System.out.println(" 3) Generar un reporte de las carreras, que para cada carrera incluya información de los\r\n" + 
+				"		   inscriptos y egresados por año. Se deben ordenar las carreras alfabéticamente, y presentar\r\n" + 
+				"		   los años de manera cronológica");
 		CarreraController c1 = new CarreraController();
 		
-		c1.getGraduadosPorCarrera();
+		List<Object> lista= c1.getGraduadosPorCarrera();
+		List<Object> lista2= c1.getInscriptosPorCarrera();
+		for (Object object : lista) {
+			System.out.println(object);
+		}
+		for (Object object : lista2) {
+			System.out.println(object);
+		}
+		
 	}
 }

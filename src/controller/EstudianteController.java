@@ -78,11 +78,7 @@ public class EstudianteController  implements Serializable{
 		Query query =em.createNativeQuery("SELECT * FROM Estudiante E WHERE E.genero =:genero ", Estudiante.class)
 				.setParameter("genero", genero);
 		List<Estudiante> listado = query.getResultList();
-		if (listado.size() == 0) {// no existe el estudiante
-			return null;
-		} else {
-			return listado;
-		}
+		return listado;
 	}
 	
 	public 	List<Estudiante> getEstudiantesCarreraResidencia(String carrera, String residencia) {
