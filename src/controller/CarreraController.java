@@ -54,14 +54,9 @@ public class CarreraController implements Serializable {
 	public List<Carrera> getCarrerasPorInscriptos() {
 		EntityManager em = emf.createEntityManager();
 		Query query = em
-				.createNativeQuery("SELECT m.id_carrera, c.nombre_carrera FROM carrera c JOIN Matricula m ON c.id_carrera=m.id_carrera GROUP BY m.id_carrera, c.nombre_carrera ORDER BY count(m.id_carrera) DESC", Carrera.class)
-				;
-		 List<Carrera> listado = query.getResultList();
-		if (listado.size() == 0) {// no hay carrera con ese id
-			return null;
-		} else {
-			return listado;
-		}
+				.createNativeQuery("SELECT m.id_carrera, c.nombre_carrera FROM Carrera c JOIN Matricula m ON c.id_carrera=m.id_carrera GROUP BY m.id_carrera, c.nombre_carrera ORDER BY count(m.id_carrera) DESC", Carrera.class);
+		List<Carrera> listado = query.getResultList();
+		return listado;
 	}
 	//CSV
 

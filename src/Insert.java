@@ -20,6 +20,12 @@ public class Insert {
 	}
 	
 	public static void cargarCarreras() {
+		
+		/*
+		 * A) Dar de alta un estudiante
+		 * B) Matricular un estudiante en una carrera
+		 */
+		
 		try {
 			CSVParser carrerasCSV = CSVFormat.DEFAULT.withHeader().parse(new FileReader("csv/carreras.csv"));
 			CarreraController carreras = new CarreraController();
